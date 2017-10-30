@@ -31,20 +31,22 @@ module.exports = async (PROJECT_CONFIG, options) => {
   const pages = await readdir(PAGES_DIR);
   const htmlsList = [];
   for (const page of pages) {
+    const PageRoot = path.join(PAGES_DIR, page);
     const htmls = await getFilesByExtName(
-      path.join(PAGES_DIR, page),
+      PageRoot,
       ['html', 'htm']
     );
-    htmlsList.push({
+    const o = {
       module: page,
       htmls: htmls.map(d => camelCase(d.replace(/\.html?$/, ''))),
-    });
+    };
+    htmlsList.push(o);
     for (const html of htmlsList.htmls) {
       const entryFile = await findFile(
-        path.join(PAGES_DIR, page),
+        PageRoot,
         `${html}.js`
       );
-      const scripts = [`${html}.js`];
+      const scripts = [entryFile];
       if (entryFile) {
         Object.assign(entry, {
           [`${page}/bundle.${html}`]: scripts, 

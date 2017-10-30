@@ -4,7 +4,7 @@ const { promisify } = require('util');
 
 const PROJECT_ROOT = exports.PROJECT_ROOT = process.cwd();
 const SOURCE_DIR = exports.SOURCE_DIR = path.join(PROJECT_ROOT, 'src');
-const PAGES_DIR = exports.PAGES_DIR = path.join(SOURCE_DIR, 'PAGES');
+const PAGES_DIR = exports.PAGES_DIR = path.join(SOURCE_DIR, 'pages');
 
 const stat = promisify(fs.stat);
 const readdir = exports.readdir = promisify(fs.readdir);
