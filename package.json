@@ -1,0 +1,59 @@
+{
+  "name": "ehdev-configer-normal",
+  "version": "0.0.1",
+  "description": "ehdev-shell's config for multiple pages project",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EHDFE/ehdev-configer-normal.git"
+  },
+  "author": "ryan.bian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EHDFE/ehdev-configer-normal/issues"
+  },
+  "homepage": "https://github.com/EHDFE/ehdev-configer-normal#readme",
+  "dependencies": {
+    "autoprefixer": "^7.1.6",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "case-sensitive-paths-webpack-plugin": "^2.1.1",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.5",
+    "html-loader": "^0.5.1",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "lodash": "^4.17.4",
+    "postcss-loader": "^2.0.8",
+    "react": "^16.0.0",
+    "react-hot-loader": "^3.1.1",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "webpack-chunk-hash": "^0.5.0",
+    "webpack-merge": "^4.1.0"
+  },
+  "bundledDependencies": [],
+  "files": [
+    "src",
+    "index.js"
+  ],
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "clean-webpack-plugin": "^0.1.17",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "mocha": "^4.0.1",
+    "webpack": "^3.8.1"
+  },
+  "engines": {
+    "node": ">= 8.1.0"
+  }
+}
