@@ -1,6 +1,6 @@
 {
   "name": "ehdev-configer-normal",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "ehdev-shell's config for multiple pages project",
   "main": "index.js",
   "scripts": {
