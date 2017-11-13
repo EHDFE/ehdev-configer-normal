@@ -41,7 +41,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
       htmls: htmls.map(d => camelCase(d.replace(/\.html?$/, ''))),
     };
     htmlsList.push(o);
-    for (const html of htmlsList.htmls) {
+    for (const html of o.htmls) {
       const entryFile = await findFile(
         PageRoot,
         `${html}.js`
