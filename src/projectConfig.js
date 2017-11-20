@@ -34,4 +34,5 @@ module.exports = {
   https: false,
   // use folder as html name
   useFolderAsHtmlName: false,
+  publicPath: '../',
 };

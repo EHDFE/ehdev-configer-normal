@@ -23,6 +23,7 @@
 | providePluginConfig | `{}` | 主要用来支持 jQuery 依赖全局挂载的老模块， 参考 [https://webpack.js.org/plugins/provide-plugin/](https://webpack.js.org/plugins/provide-plugin/) |
 | https | false | 开发环境的 https 支持 |
 | useFolderAsHtmlName | false | 使用 `page` 下的目录名作为页面名 |
+| publicPath | `../` | `webpackConfig.output.publicPath`, 只在构建时生效 |
 
 ## 使用说明
 

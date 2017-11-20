@@ -59,7 +59,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
   const output = {
     path: BUILD_PATH,
     filename: '[name].[chunkhash:8].js',
-    publicPath: PUBLIC_PATH,
+    publicPath: PROJECT_CONFIG.publicPath || PUBLIC_PATH,
   };
 
   const babelLoaderConfig = {

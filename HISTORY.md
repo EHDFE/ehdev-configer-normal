@@ -8,3 +8,8 @@ FIX:
 
 FEATURES:
 - supports `svg to react component` feature.
+
+## v0.0.6
+---
+FEATURE:
+  - add `publicPath` in projectConfig
