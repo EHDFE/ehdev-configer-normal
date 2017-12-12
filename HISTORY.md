@@ -1,5 +1,15 @@
 # HISTORY
 
+## v0.0.7
+---
+CHANGE:
+  - remove `uglifyPlugin` from `prod.conf.js`
+
+
+## v0.0.6
+---
+FEATURE:
+  - add `publicPath` in projectConfig
 
 ## v0.0.5
 ---
@@ -9,7 +19,3 @@ FIX:
 FEATURES:
 - supports `svg to react component` feature.
 
-## v0.0.6
----
-FEATURE:
-  - add `publicPath` in projectConfig

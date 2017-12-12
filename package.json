@@ -1,7 +1,7 @@
 {
   "name": "ehdev-configer-normal",
   "version": "0.0.6",
-  "description": "ehdev-shell's config for multiple pages project",
+  "description": "jarvis's config for multiple pages project",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
