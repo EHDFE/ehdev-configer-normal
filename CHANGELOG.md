@@ -1,10 +1,14 @@
-# HISTORY
+# CHANGELOG
+
+## v0.0.8
+---
+FEATURE:
+  - add `posthtml-loader` and `posthtml-expression`, which supports  local variables and expressions in your html templates
 
 ## v0.0.7
 ---
 CHANGE:
   - remove `uglifyPlugin` from `prod.conf.js`
-
 
 ## v0.0.6
 ---
