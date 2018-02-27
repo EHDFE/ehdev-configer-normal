@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.0.9
+---
+FEATURE:
+  - add `commonVendors` 配置项
+
 ## v0.0.8
 ---
 FEATURE:
