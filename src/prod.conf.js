@@ -7,7 +7,7 @@ const webpack = require(path.join(SHELL_NODE_MODULES_PATH, 'webpack'));
 const HtmlWebpackPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'html-webpack-plugin'));
 const ExtractTextPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'extract-text-webpack-plugin'));
 const CleanWebpackPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'clean-webpack-plugin'));
-const { camelCase } = require('lodash');
+// const { camelCase } = require('lodash');
 const autoprefixer = require('autoprefixer');
 const WebpackChunkHash = require('webpack-chunk-hash');
 
@@ -40,7 +40,8 @@ module.exports = async (PROJECT_CONFIG, options) => {
     );
     const o = {
       module: page,
-      htmls: htmls.map(d => camelCase(d.replace(/\.html?$/, ''))),
+      // htmls: htmls.map(d => camelCase(d.replace(/\.html?$/, ''))),
+      htmls: htmls.map(d => d.replace(/\.html?$/, '')),
     };
     htmlsList.push(o);
     for (const html of o.htmls) {
@@ -48,7 +49,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
         PageRoot,
         `${html}.js`
       );
-      const scripts = [entryFile];
+      const scripts = [...PROJECT_CONFIG.commonVendors, entryFile];
       if (entryFile) {
         Object.assign(entry, {
           [`${page}/bundle.${html}`]: scripts, 

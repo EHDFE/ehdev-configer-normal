@@ -5,7 +5,7 @@ const path = require('path');
 const SHELL_NODE_MODULES_PATH = process.env.SHELL_NODE_MODULES_PATH;
 const webpack = require(path.join(SHELL_NODE_MODULES_PATH, 'webpack'));
 const HtmlWebpackPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'html-webpack-plugin'));
-const { camelCase } = require('lodash');
+// const { camelCase } = require('lodash');
 const autoprefixer = require('autoprefixer');
 
 const {
@@ -44,7 +44,8 @@ module.exports = async (PROJECT_CONFIG, options) => {
     );
     const o = {
       module: page,
-      htmls: htmls.map(d => camelCase(d.replace(/\.html?$/, ''))),
+      // htmls: htmls.map(d => camelCase(d.replace(/\.html?$/, ''))),
+      htmls: htmls.map(d => d.replace(/\.html?$/, '')),
     };
     htmlsList.push(o);
     for (const html of o.htmls) {
@@ -52,7 +53,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
         PageRoot,
         `${html}.js`
       );
-      const scripts = [entryFile];
+      const scripts = [...PROJECT_CONFIG.commonVendors, entryFile];
       if (PROJECT_CONFIG.enableHotModuleReplacement) {
         scripts.unshift(...devServerEntry);
       }

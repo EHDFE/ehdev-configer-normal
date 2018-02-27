@@ -26,6 +26,7 @@
 | useFolderAsHtmlName | false | 使用 `page` 下的目录名作为页面名 |
 | publicPath | `../` | `webpackConfig.output.publicPath`, 只在构建时生效 |
 | contentBase | undefined | 配置 devServer 的 [contentBase](https://webpack.js.org/configuration/dev-server/#devserver-contentbase)，默认包含当前项目的输出目录，不需要配置 |
+| commonVendors | [] | 所有 entry 共享的 vendors |
 
 ## 使用说明
 

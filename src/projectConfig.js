@@ -35,4 +35,5 @@ module.exports = {
   // use folder as html name
   useFolderAsHtmlName: false,
   publicPath: '../',
+  commonVendors: [],
 };
