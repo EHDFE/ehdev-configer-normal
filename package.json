@@ -1,6 +1,6 @@
 {
   "name": "ehdev-configer-normal",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "jarvis's config for multiple pages project",
   "main": "index.js",
   "scripts": {
