@@ -31,9 +31,6 @@ module.exports = async (PROJECT_CONFIG, options) => {
     `${require.resolve(`${path.join(SHELL_NODE_MODULES_PATH, 'webpack-dev-server')}/client`)}?http://localhost:${options.port}`,
     require.resolve(`${path.join(SHELL_NODE_MODULES_PATH, 'webpack')}/hot/dev-server`),
   ];
-  if (PROJECT_CONFIG.framework === 'react') {
-    devServerEntry.unshift(require.resolve('react-hot-loader/patch'));
-  }
   const pages = await readdir(PAGES_DIR);
   const htmlsList = [];
   for (const page of pages) {
@@ -102,7 +99,14 @@ module.exports = async (PROJECT_CONFIG, options) => {
       // It enables caching results in ./node_modules/.cache/babel-loader/
       // directory for faster rebuilds.
       cacheDirectory: true,
+      plugins: [],
     },
+  }
+
+  if (PROJECT_CONFIG.framework === 'react') {
+    babelLoaderConfig.options.plugins.push(
+      'react-hot-loader/babel'
+    );
   }
 
   // module config
