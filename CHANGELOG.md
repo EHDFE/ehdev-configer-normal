@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.1
+---
+BUGFIX:
+  - some issues.
+
 ## v0.1.0
 ---
 FEATURE:

@@ -16,7 +16,7 @@ const {
   findFile,
   getFilesByExtName,
   getHtmlLoaderConfig,
-  getLoaderOptionPlugin,
+  // getLoaderOptionPlugin,
 } = require('./lib');
 const PUBLIC_PATH = '/';
 
@@ -105,7 +105,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
 
   if (PROJECT_CONFIG.framework === 'react') {
     babelLoaderConfig.options.plugins.push(
-      'react-hot-loader/babel'
+      require.resolve('react-hot-loader/babel')
     );
   }
 
@@ -178,6 +178,9 @@ module.exports = async (PROJECT_CONFIG, options) => {
               },
               {
                 loader: require.resolve('less-loader'),
+                options: {
+                  javascriptEnabled: true,
+                },
               }
             ],
           },
@@ -234,7 +237,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
   plugins.push(
     // Add module names to factory functions so they appear in browser profiler.
     new webpack.NamedModulesPlugin(),
-    getLoaderOptionPlugin(PROJECT_CONFIG),
+    // getLoaderOptionPlugin(PROJECT_CONFIG),
   );
   if (PROJECT_CONFIG.enableHotModuleReplacement) {
     plugins.push(

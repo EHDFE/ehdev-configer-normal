@@ -19,7 +19,7 @@ const {
   findFile,
   getFilesByExtName,
   getHtmlLoaderConfig,
-  getLoaderOptionPlugin,
+  // getLoaderOptionPlugin,
 } = require('./lib');
 const PUBLIC_PATH = '/';
 
@@ -169,6 +169,9 @@ module.exports = async (PROJECT_CONFIG, options) => {
                 },
                 {
                   loader: require.resolve('less-loader'),
+                  options: {
+                    javascriptEnabled: true,
+                  },
                 }
               ],
             }),
@@ -231,7 +234,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
     new ExtractTextPlugin({
       filename: '[name].[contenthash:8].css',
     }),
-    getLoaderOptionPlugin(PROJECT_CONFIG),
+    // getLoaderOptionPlugin(PROJECT_CONFIG),
   );
   
   Object.assign(configResult, {

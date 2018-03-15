@@ -70,6 +70,15 @@ exports.getHtmlLoaderConfig = PROJECT_CONFIG => ({
     },
     {
       loader: require.resolve('posthtml-loader'),
+      options: {
+        plugins: [
+          require('posthtml-expressions')({
+            locals:{
+              env: process.env.NODE_ENV, 
+            }
+          })
+        ],
+      },
     },
   ],
 });
