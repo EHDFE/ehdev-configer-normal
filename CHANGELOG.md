@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.2
+---
+FEATURE:
+  - use `mini-css-extract-plugin` plugin for production env
+
 ## v0.1.1
 ---
 BUGFIX:
