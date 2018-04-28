@@ -13,6 +13,7 @@ const autoprefixer = require('autoprefixer');
 const WebpackChunkHash = require('webpack-chunk-hash');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const HappyPack = require('happypack');
 
 const {
   PROJECT_ROOT,
@@ -67,35 +68,47 @@ module.exports = async (PROJECT_CONFIG, options) => {
     filename: '[name].[chunkhash:8].js',
     publicPath: PROJECT_CONFIG.publicPath || PUBLIC_PATH,
   };
-
   const babelLoaderConfig = {
-    loader: require.resolve('babel-loader'),
+    // loader: require.resolve('babel-loader'),
+    loader: require.resolve('happypack/loader'),
     options: {
-      // @remove-on-eject-begin
-      babelrc: false,
-      presets: [
-        [
-          require.resolve('babel-preset-env'),
-          {
-            targets: {
-              browsers: PROJECT_CONFIG.browserSupports.PRODUCTION,
-            }, 
-            module: false,
-            useBuiltIns: PROJECT_CONFIG.babelUseBuiltIns,
-          }
-        ]
-      ].concat(
-        PROJECT_CONFIG.framework === 'react' ? [
-          require.resolve('babel-preset-react'),
-          require.resolve('babel-preset-stage-1'),
-        ] : [
-          require.resolve('babel-preset-stage-1'),
-        ]
-      ),
-      // @remove-on-eject-end
-      compact: true,
+      id: 'babel',
     },
   };
+
+  const happypackPluginList = [
+    new HappyPack({
+      id: 'babel',
+      loaders: [ {
+        loader: require.resolve('babel-loader'),
+        options: {
+          // @remove-on-eject-begin
+          babelrc: false,
+          presets: [
+            [
+              require.resolve('babel-preset-env'),
+              {
+                targets: {
+                  browsers: PROJECT_CONFIG.browserSupports.PRODUCTION,
+                }, 
+                module: false,
+                useBuiltIns: PROJECT_CONFIG.babelUseBuiltIns,
+              }
+            ]
+          ].concat(
+            PROJECT_CONFIG.framework === 'react' ? [
+              require.resolve('babel-preset-react'),
+              require.resolve('babel-preset-stage-1'),
+            ] : [
+              require.resolve('babel-preset-stage-1'),
+            ]
+          ),
+          // @remove-on-eject-end
+          compact: true,
+        },
+      }],
+    }),
+  ];
 
   // module config
   const module = {
@@ -225,6 +238,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
       verbose: true,
       dry: false,
     }),
+    ...happypackPluginList,
     new webpack.HashedModuleIdsPlugin(),
     new WebpackChunkHash(),
     new MiniCssExtractPlugin({
@@ -244,9 +258,11 @@ module.exports = async (PROJECT_CONFIG, options) => {
     optimization: {
       minimizer: [
         new UglifyJsPlugin({
+          cache: true,
           sourceMap: true,
+          parallel: true,
           uglifyOptions: {
-            mangle: false,
+            // mangle: false,
           },
         }),
         new OptimizeCssAssetsPlugin({}),

@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.3
+---
+FEATURE:
+  - use `happypack` to speed up compilation in production build.
+  - use multiple thread in uglify config.
+  - enable `mangle` in uglify.
+
 ## v0.1.2
 ---
 FEATURE:
