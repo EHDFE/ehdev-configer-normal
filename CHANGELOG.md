@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.4
+---
+FEATURE:
+  - ✅ add `ignorePages` config.
+
 ## v0.1.3
 ---
 FEATURE:

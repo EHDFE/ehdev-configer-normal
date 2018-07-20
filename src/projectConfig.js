@@ -36,4 +36,5 @@ module.exports = {
   useFolderAsHtmlName: false,
   publicPath: '../',
   commonVendors: [],
+  ignorePages: [],
 };

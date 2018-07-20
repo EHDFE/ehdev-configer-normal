@@ -28,12 +28,14 @@ module.exports = async (PROJECT_CONFIG, options) => {
   // entry config
   const entry = {};
   const devServerEntry = [
-    `${require.resolve(`${path.join(SHELL_NODE_MODULES_PATH, 'webpack-dev-server')}/client`)}?http://localhost:${options.port}`,
+    `${require.resolve(`${path.join(SHELL_NODE_MODULES_PATH, 'webpack-dev-server')}/client`)}?http://${options.ip ? options.ip : 'localhost'}:${options.port}`,
     require.resolve(`${path.join(SHELL_NODE_MODULES_PATH, 'webpack')}/hot/dev-server`),
   ];
   const pages = await readdir(PAGES_DIR);
   const htmlsList = [];
+  const ignorePages = PROJECT_CONFIG.ignorePages || [];
   for (const page of pages) {
+    if (ignorePages.includes(page)) continue;
     const PageRoot = path.join(PAGES_DIR, page);
     const htmls = await getFilesByExtName(
       PageRoot,
@@ -121,7 +123,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
           // smaller than specified limit in bytes as data URLs to avoid requests.
           // A missing `test` is equivalent to a match.
           {
-            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.webp$/],
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
@@ -160,7 +162,6 @@ module.exports = async (PROJECT_CONFIG, options) => {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
-                  minimize: false,
                 },
               },
               {
@@ -256,7 +257,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
     // splitting or minification in interest of speed. These warnings become
     // cumbersome.
     performance: {
-      hints: false,
+      hints: 'warning',
     },
   });
 
